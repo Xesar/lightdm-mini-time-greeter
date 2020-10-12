@@ -1,22 +1,8 @@
 # Mini-Greeter
 
-[![AUR package](https://repology.org/badge/version-for-repo/aur/lightdm-mini-greeter.svg)](https://aur.archlinux.org/packages/lightdm-mini-greeter) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a1c58074072542be8ea60d1bf14863fc)](https://www.codacy.com/app/pavan-rikhi-agit/lightdm-mini-greeter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prikhi/lightdm-mini-greeter&amp;utm_campaign=Badge_Grade)
-
 A minimal but highly configurable single-user GTK3 greeter for LightDM.
 
 Inspired by the SLiM Display Manager & LightDM GTK3 Greeter.
-
-
-## Goals
-
-Eventually this is will present a more customizable interface:
-
-* Randomized Background Wallpapers
-* Configurable language/session info? (lightdm provides this already?)
-* Hotkey to cycle between DE/WM sessions
-* Handle GdkDisplay's `monitor-added` & `monitor-removed` signals
-
-[Open Feature Requests](http://bugs.sleepanarchy.com/projects/mini-greeter/issues/)
 
 
 ## Current Status
@@ -34,66 +20,6 @@ Right now you can:
 
 
 ## Install
-
-### Arch Linux
-
-Install the [lightdm-mini-greeter package][aur-package] from the Arch User
-Repository:
-
-```sh
-packer -S lightdm-mini-greeter
-```
-
-### Gentoo Linux
-
-Emerge the [lightdm-mini-greeter package][gentoo-package]:
-
-```sh
-emerge x11-misc/lightdm-mini-greeter
-```
-
-### NixOS
-
-Enable & configure the greeter & default session in your `configuration.nix`:
-
-```nix
-{
-    services.xserver = {
-        enable = true;
-        displayManager.lightdm.greeters.mini = {
-            enable = true;
-            user = "your-username";
-            extraConfig = ''
-                [greeter]
-                show-password-label = false
-                [greeter-theme]
-                background-image = ""
-            '';
-        };
-        windowManager = {
-            default = "awesome";
-            awesome.enable = true;
-        };
-    };
-}
-```
-
-Then rebuild & switch your configuration with `nixos-rebuild switch`.
-
-### Debian
-
-Debian packages for the latest `stable` branch are available on the
-[Releases][releases] page.
-
-You can use `debhelper` to build the package yourself:
-
-```sh
-sudo apt-get install build-essential automake pkg-config fakeroot debhelper \
-    liblightdm-gobject-dev libgtk-3-dev
-cd lightdm-mini-greeter
-fakeroot dh binary
-sudo dpkg -i ../lightdm-mini-greeter_*.deb
-```
 
 ### Manual
 
@@ -154,14 +80,6 @@ Section "InputClass"
         Option "XkbLayout" "fr"
 EndSection
 ```
-
-## Contribute
-
-You can submit feature requests, bug reports, pull requests or patches on
-either [github](http://github.com/prikhi/lightdm-mini-greeter) or
-[redmine](http://bugs.sleepanarchy.com/projects/mini-greeter/).
-
-If you like Mini-Greeter, please consider packaging it for your distribution.
 
 
 ### Style
