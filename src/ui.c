@@ -275,6 +275,7 @@ static void create_and_attach_feedback_label(UI *ui)
 static void create_and_attach_time_label(UI *ui)
 {
     ui->time_label = gtk_label_new("");
+	timer_handler(ui);
     gtk_label_set_justify(GTK_LABEL(ui->time_label), GTK_JUSTIFY_CENTER);
 
     GtkWidget *attachment_point;
