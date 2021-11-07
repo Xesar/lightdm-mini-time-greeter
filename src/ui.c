@@ -40,9 +40,9 @@ UI *initialize_ui(Config *config)
     setup_main_window(config, ui);
     create_and_attach_layout_container(ui);
     create_and_attach_password_field(config, ui);
+    create_and_attach_time_label(ui);
     create_and_attach_feedback_label(ui);
 
-    create_and_attach_time_label(ui);
     g_timeout_add_seconds(1, (GSourceFunc)timer_handler, ui);
 
     attach_config_colors_to_screen(config);
@@ -259,14 +259,12 @@ static void create_and_attach_feedback_label(UI *ui)
 
     GtkWidget *attachment_point;
     gint width;
-    if (ui->password_label == NULL) {
-        attachment_point = ui->password_input;
+    if (ui->password_label == NULL)
         width = 1;
-    } else {
-        attachment_point = ui->password_label;
+    else
         width = 2;
-    }
 
+    attachment_point = ui->time_label;
     gtk_grid_attach_next_to(ui->layout_container, ui->feedback_label,
                             attachment_point, GTK_POS_BOTTOM, width, 1);
 }
